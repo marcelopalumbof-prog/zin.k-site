@@ -1,5 +1,6 @@
 import { Section } from "../components/Section";
 import { Reveal } from "../components/Reveal";
+import { IconPop } from "../components/IconPop";
 
 const STEPS = [
   {
@@ -38,9 +39,12 @@ export function Process() {
             <li key={number}>
               <Reveal delay={i * 0.08} className="h-full">
                 <article className="h-full rounded-2xl border border-white/10 bg-surface-2 p-6">
-                  <p className="font-display text-4xl font-bold text-accent">
+                  <IconPop
+                    className="block font-display text-4xl font-bold text-accent"
+                    delay={0.1}
+                  >
                     {number}
-                  </p>
+                  </IconPop>
                   <h3 className="mt-4 font-display text-lg font-semibold text-cream">
                     {title}
                   </h3>

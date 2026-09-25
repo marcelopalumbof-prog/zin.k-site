@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./Reveal";
+import { SplitText } from "./SplitText";
 
 interface SectionProps {
   id: string;
@@ -34,7 +35,7 @@ export function Section({
             id={`${id}-titulo`}
             className="font-display text-3xl font-bold text-cream sm:text-4xl"
           >
-            {title}
+            <SplitText text={title} />
           </h2>
           {description && (
             <p className="mt-4 max-w-2xl text-base/7 text-cream/60">

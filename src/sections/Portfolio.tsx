@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import {
   CATEGORY_LABELS,
@@ -12,6 +13,7 @@ import { Reveal } from "../components/Reveal";
 type Filter = "todos" | ProjectCategory;
 
 export function Portfolio() {
+  const reduce = useReducedMotion();
   const [filter, setFilter] = useState<Filter>("todos");
 
   const counts = useMemo(() => {
@@ -80,11 +82,15 @@ export function Portfolio() {
                 className="group block h-full overflow-hidden rounded-2xl border border-white/10 bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-accent/40"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <motion.img
                     src={project.cover}
                     alt={project.coverAlt}
                     loading="lazy"
                     decoding="async"
+                    initial={reduce ? false : { scale: 1.18, opacity: 0.4 }}
+                    whileInView={reduce ? undefined : { scale: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: "-64px" }}
+                    transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                   <div

@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Section } from "../components/Section";
 import { Reveal } from "../components/Reveal";
+import { IconPop } from "../components/IconPop";
 
 const SERVICES = [
   {
@@ -56,9 +57,9 @@ export function Services() {
             <li key={title}>
               <Reveal delay={(i % 3) * 0.08} className="h-full">
                 <article className="group h-full rounded-2xl border border-white/10 bg-surface-2 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/12 text-accent-text transition-colors group-hover:bg-accent/20">
+                  <IconPop className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/12 text-accent-text transition-colors group-hover:bg-accent/20">
                     <Icon size={20} aria-hidden="true" />
-                  </span>
+                  </IconPop>
                   <h3 className="mt-5 font-display text-lg font-semibold text-cream">
                     {title}
                   </h3>

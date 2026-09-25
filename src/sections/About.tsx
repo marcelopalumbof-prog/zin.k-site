@@ -2,6 +2,7 @@ import { LayoutGrid, PenTool, TrendingUp } from "lucide-react";
 import { Section } from "../components/Section";
 import { Reveal } from "../components/Reveal";
 import { Counter } from "../components/Counter";
+import { IconPop } from "../components/IconPop";
 
 const PILLARS = [
   {
@@ -40,9 +41,9 @@ export function About() {
           <li key={title}>
             <Reveal delay={i * 0.08} className="h-full">
               <article className="h-full rounded-2xl border border-white/10 bg-surface p-6 transition-colors duration-300 hover:border-accent/40">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/12 text-accent-text">
+                <IconPop className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/12 text-accent-text">
                   <Icon size={20} aria-hidden="true" />
-                </span>
+                </IconPop>
                 <h3 className="mt-5 font-display text-lg font-semibold text-cream">
                   {title}
                 </h3>

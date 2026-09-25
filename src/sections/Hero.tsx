@@ -21,10 +21,21 @@ export function Hero() {
   const blobY2 = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const gridOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
 
+  // luz sutil que segue o cursor (só desktop; ignorado com prefers-reduced-motion)
+  function handleMouseMove(event: React.MouseEvent<HTMLElement>) {
+    if (reduce) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    event.currentTarget.style.setProperty("--mx", `${x}%`);
+    event.currentTarget.style.setProperty("--my", `${y}%`);
+  }
+
   return (
     <section
       ref={sectionRef}
       id="inicio"
+      onMouseMove={handleMouseMove}
       className="relative flex min-h-[100svh] items-center overflow-hidden"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -40,6 +51,15 @@ export function Hero() {
           style={reduce ? undefined : { opacity: gridOpacity }}
           className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black,transparent)]"
         />
+        {!reduce && (
+          <div
+            className="absolute inset-0 hidden opacity-0 transition-opacity duration-500 md:block md:opacity-100"
+            style={{
+              background:
+                "radial-gradient(560px circle at var(--mx, 50%) var(--my, 30%), rgba(139,92,246,0.14), transparent 45%)",
+            }}
+          />
+        )}
       </div>
 
       <div className="relative mx-auto w-full max-w-6xl px-5 pb-24 pt-32 sm:px-8">
